@@ -9,3 +9,4 @@
 #   end
 
 FactoryBot.create_list(:course, 50)
+FactoryBot.create_list(:tutor, 20)
