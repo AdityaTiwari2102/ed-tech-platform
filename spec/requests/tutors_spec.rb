@@ -12,7 +12,7 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/tutors", type: :request do
+RSpec.describe '/tutors', type: :request do
 
   # This should return the minimal set of attributes required to create a valid
   # Tutor. As you add validations to Tutor, be sure to
@@ -25,53 +25,53 @@ RSpec.describe "/tutors", type: :request do
     { name: '', email: '', course_id: '' }
   }
 
-  describe "GET /index" do
-    it "renders a successful response" do
+  describe 'GET /index' do
+    it 'renders a successful response' do
       Tutor.create! valid_attributes
       get tutors_url
       expect(response).to be_successful
     end
   end
 
-  describe "GET /show" do
-    it "renders a successful response" do
+  describe 'GET /show' do
+    it 'renders a successful response' do
       tutor = Tutor.create! valid_attributes
       get tutor_url(tutor)
       expect(response).to be_successful
     end
   end
 
-  describe "GET /new" do
-    it "renders a successful response" do
+  describe 'GET /new' do
+    it 'renders a successful response' do
       get new_tutor_url
       expect(response).to be_successful
     end
   end
 
-  describe "GET /edit" do
-    it "renders a successful response" do
+  describe 'GET /edit' do
+    it 'renders a successful response' do
       tutor = Tutor.create! valid_attributes
       get edit_tutor_url(tutor)
       expect(response).to be_successful
     end
   end
 
-  describe "POST /create" do
-    context "with valid parameters" do
-      it "creates a new Tutor" do
+  describe 'POST /create' do
+    context 'with valid parameters' do
+      it 'creates a new Tutor' do
         expect {
           post tutors_url, params: { tutor: valid_attributes }
         }.to change(Tutor, :count).by(1)
       end
 
-      it "redirects to the created tutor" do
+      it 'redirects to the created tutor' do
         post tutors_url, params: { tutor: valid_attributes }
         expect(response).to redirect_to(tutor_url(Tutor.last))
       end
     end
 
-    context "with invalid parameters" do
-      it "does not create a new Tutor" do
+    context 'with invalid parameters' do
+      it 'does not create a new Tutor' do
         expect {
           post tutors_url, params: { tutor: invalid_attributes }
         }.to change(Tutor, :count).by(0)
@@ -86,13 +86,13 @@ RSpec.describe "/tutors", type: :request do
     end
   end
 
-  describe "PATCH /update" do
-    context "with valid parameters" do
+  describe 'PATCH /update' do
+    context 'with valid parameters' do
       let(:new_attributes) {
         { name: 'RC Dutta', email: 'rc.dutta@example.com', course_id: create(:course).id }
       }
 
-      it "updates the requested tutor" do
+      it 'updates the requested tutor' do
         tutor = Tutor.create! valid_attributes
         patch tutor_url(tutor), params: { tutor: new_attributes }
         tutor.reload
@@ -101,7 +101,7 @@ RSpec.describe "/tutors", type: :request do
         expect(tutor.course_id).to eq(Course.last.id)
       end
 
-      it "redirects to the tutor" do
+      it 'redirects to the tutor' do
         tutor = Tutor.create! valid_attributes
         patch tutor_url(tutor), params: { tutor: new_attributes }
         tutor.reload
@@ -109,7 +109,7 @@ RSpec.describe "/tutors", type: :request do
       end
     end
 
-    context "with invalid parameters" do
+    context 'with invalid parameters' do
 
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         tutor = Tutor.create! valid_attributes
@@ -120,15 +120,15 @@ RSpec.describe "/tutors", type: :request do
     end
   end
 
-  describe "DELETE /destroy" do
-    it "destroys the requested tutor" do
+  describe 'DELETE /destroy' do
+    it 'destroys the requested tutor' do
       tutor = Tutor.create! valid_attributes
       expect {
         delete tutor_url(tutor)
       }.to change(Tutor, :count).by(-1)
     end
 
-    it "redirects to the tutors list" do
+    it 'redirects to the tutors list' do
       tutor = Tutor.create! valid_attributes
       delete tutor_url(tutor)
       expect(response).to redirect_to(tutors_url)
