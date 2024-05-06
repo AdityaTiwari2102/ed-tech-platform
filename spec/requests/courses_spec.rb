@@ -12,66 +12,66 @@ require 'rails_helper'
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/courses", type: :request do
+RSpec.describe '/courses', type: :request do
 
   # This should return the minimal set of attributes required to create a valid
   # Course. As you add validations to Course, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    FactoryBot.build(:course).attributes.except('id', 'created_at', 'updated_at')
+    attributes_for(:course)
   }
 
   let(:invalid_attributes) {
     { title: nil, description: nil, price: nil, level: nil, category: nil, status: nil }
   }
 
-  describe "GET /index" do
-    it "renders a successful response" do
+  describe 'GET /index' do
+    it 'renders a successful response' do
       Course.create! valid_attributes
       get courses_url
       expect(response).to be_successful
     end
   end
 
-  describe "GET /show" do
-    it "renders a successful response" do
+  describe 'GET /show' do
+    it 'renders a successful response' do
       course = Course.create! valid_attributes
       get course_url(course)
       expect(response).to be_successful
     end
   end
 
-  describe "GET /new" do
-    it "renders a successful response" do
+  describe 'GET /new' do
+    it 'renders a successful response' do
       get new_course_url
       expect(response).to be_successful
     end
   end
 
-  describe "GET /edit" do
-    it "renders a successful response" do
+  describe 'GET /edit' do
+    it 'renders a successful response' do
       course = Course.create! valid_attributes
       get edit_course_url(course)
       expect(response).to be_successful
     end
   end
 
-  describe "POST /create" do
-    context "with valid parameters" do
-      it "creates a new Course" do
+  describe 'POST /create' do
+    context 'with valid parameters' do
+      it 'creates a new Course' do
         expect {
           post courses_url, params: { course: valid_attributes }
         }.to change(Course, :count).by(1)
       end
 
-      it "redirects to the created course" do
+      it 'redirects to the created course' do
         post courses_url, params: { course: valid_attributes }
         expect(response).to redirect_to(course_url(Course.last))
       end
     end
 
-    context "with invalid parameters" do
-      it "does not create a new Course" do
+    context 'with invalid parameters' do
+      it 'does not create a new Course' do
         expect {
           post courses_url, params: { course: invalid_attributes }
         }.to change(Course, :count).by(0)
@@ -86,13 +86,13 @@ RSpec.describe "/courses", type: :request do
     end
   end
 
-  describe "PATCH /update" do
-    context "with valid parameters" do
+  describe 'PATCH /update' do
+    context 'with valid parameters' do
       let(:new_attributes) {
         { title: 'New Title', description: 'New Description', price: 2000, level: 'intermediate', category: 'mobile_development', status: 'inactive' }
       }
 
-      it "updates the requested course" do
+      it 'updates the requested course' do
         course = Course.create! valid_attributes
         patch course_url(course), params: { course: new_attributes }
         course.reload
@@ -104,7 +104,7 @@ RSpec.describe "/courses", type: :request do
         expect(course.status).to eq('inactive')
       end
 
-      it "redirects to the course" do
+      it 'redirects to the course' do
         course = Course.create! valid_attributes
         patch course_url(course), params: { course: new_attributes }
         course.reload
@@ -112,7 +112,7 @@ RSpec.describe "/courses", type: :request do
       end
     end
 
-    context "with invalid parameters" do
+    context 'with invalid parameters' do
 
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         course = Course.create! valid_attributes
@@ -123,15 +123,15 @@ RSpec.describe "/courses", type: :request do
     end
   end
 
-  describe "DELETE /destroy" do
-    it "destroys the requested course" do
+  describe 'DELETE /destroy' do
+    it 'destroys the requested course' do
       course = Course.create! valid_attributes
       expect {
         delete course_url(course)
       }.to change(Course, :count).by(-1)
     end
 
-    it "redirects to the courses list" do
+    it 'redirects to the courses list' do
       course = Course.create! valid_attributes
       delete course_url(course)
       expect(response).to redirect_to(courses_url)
