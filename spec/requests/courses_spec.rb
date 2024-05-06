@@ -18,7 +18,7 @@ RSpec.describe '/courses', type: :request do
   # Course. As you add validations to Course, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    build(:course).attributes.except('id', 'created_at', 'updated_at')
+    attributes_for(:course)
   }
 
   let(:invalid_attributes) {

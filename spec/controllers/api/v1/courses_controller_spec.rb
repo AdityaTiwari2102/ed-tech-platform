@@ -77,7 +77,7 @@ RSpec.describe Api::V1::CoursesController, type: :controller do
     context 'when valid' do
       let(:params) do
         {
-          course: build(:course).attributes.except('id', 'created_at', 'updated_at').merge(tutors_attributes: [build(:tutor).attributes.except('id', 'created_at', 'updated_at')])
+          course: attributes_for(:course).merge(tutors_attributes: [attributes_for(:tutor).except(:course)])
         }
       end
 
@@ -125,7 +125,7 @@ RSpec.describe Api::V1::CoursesController, type: :controller do
       context 'when tutor name and email is blank' do
         let(:params) do
           {
-            course: build(:course).attributes.except('id', 'created_at', 'updated_at').merge(tutors_attributes: [{ name: nil, email: nil }])
+            course: attributes_for(:course).merge(tutors_attributes: [{ name: nil, email: nil }])
           }
         end
 
