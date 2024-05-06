@@ -1,6 +1,8 @@
 class Course < ApplicationRecord
   has_many :tutors
 
+  accepts_nested_attributes_for :tutors
+
   enum status: { live: 'live', inactive: 'inactive' }
   enum level: { beginner: 'beginner', intermediate: 'intermediate', advanced: 'advanced' }
   enum category: { web_development: 'web_development', mobile_development: 'mobile_development', data_science: 'data_science', design: 'design' }
