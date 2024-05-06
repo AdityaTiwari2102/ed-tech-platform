@@ -74,3 +74,7 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
 end
+
+# To serialize Active Record objects on rendering
+gem 'active_model_serializers'
+gem 'pagy', '~> 8.4'
