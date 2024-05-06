@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::CoursesController, type: :controller do
   describe '#index' do
-    let(:course) { FactoryBot.create(:course, title: 'API Course', description: 'Testing for first course!') }
-    let!(:tutor1) { FactoryBot.create(:tutor, name: 'Sharma Ji', email: 'sharma@example.com', course: course) }
-    let!(:tutor2) { FactoryBot.create(:tutor, name: 'Gupta Ji', email: 'gupta@example.com', course: course) }
+    let(:course) { create(:course, title: 'API Course', description: 'Testing for first course!') }
+    let!(:tutor1) { create(:tutor, name: 'Sharma Ji', email: 'sharma@example.com', course: course) }
+    let!(:tutor2) { create(:tutor, name: 'Gupta Ji', email: 'gupta@example.com', course: course) }
 
     context 'when valid params are passed' do
       let(:params) do
@@ -77,7 +77,7 @@ RSpec.describe Api::V1::CoursesController, type: :controller do
     context 'when valid' do
       let(:params) do
         {
-          course: FactoryBot.build(:course).attributes.except('id', 'created_at', 'updated_at').merge(tutors_attributes: [FactoryBot.build(:tutor).attributes.except('id', 'created_at', 'updated_at')])
+          course: build(:course).attributes.except('id', 'created_at', 'updated_at').merge(tutors_attributes: [build(:tutor).attributes.except('id', 'created_at', 'updated_at')])
         }
       end
 
@@ -125,7 +125,7 @@ RSpec.describe Api::V1::CoursesController, type: :controller do
       context 'when tutor name and email is blank' do
         let(:params) do
           {
-            course: FactoryBot.build(:course).attributes.except('id', 'created_at', 'updated_at').merge(tutors_attributes: [{ name: nil, email: nil }])
+            course: build(:course).attributes.except('id', 'created_at', 'updated_at').merge(tutors_attributes: [{ name: nil, email: nil }])
           }
         end
 

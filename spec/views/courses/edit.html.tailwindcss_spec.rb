@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "courses/edit", type: :view do
   let(:course) {
-    FactoryBot.create(:course)
+    create(:course)
   }
 
   before(:each) do

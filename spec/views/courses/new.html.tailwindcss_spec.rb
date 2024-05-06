@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "courses/new", type: :view do
   before(:each) do
-    assign(:course, FactoryBot.build(:course))
+    assign(:course, build(:course))
   end
 
   it "renders new course form" do

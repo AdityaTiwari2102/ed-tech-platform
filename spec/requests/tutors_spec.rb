@@ -18,7 +18,7 @@ RSpec.describe "/tutors", type: :request do
   # Tutor. As you add validations to Tutor, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    FactoryBot.build(:tutor, course: FactoryBot.create(:course)).attributes.except('id', 'created_at', 'updated_at')
+    build(:tutor, course: create(:course)).attributes.except('id', 'created_at', 'updated_at')
   }
 
   let(:invalid_attributes) {
@@ -89,7 +89,7 @@ RSpec.describe "/tutors", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        { name: 'RC Dutta', email: 'rc.dutta@example.com', course_id: FactoryBot.create(:course).id }
+        { name: 'RC Dutta', email: 'rc.dutta@example.com', course_id: create(:course).id }
       }
 
       it "updates the requested tutor" do

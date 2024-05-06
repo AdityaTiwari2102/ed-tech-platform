@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "tutors/show", type: :view do
   before(:each) do
-    assign(:tutor, FactoryBot.create(:tutor, name: "HC Verma", email: "hc.verma@gmail.com", course: FactoryBot.create(:course)))
+    assign(:tutor, create(:tutor, name: "HC Verma", email: "hc.verma@gmail.com", course: create(:course)))
   end
 
   it "renders attributes in <p>" do

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "courses/show", type: :view do
   before(:each) do
-    assign(:course, FactoryBot.create(:course))
+    assign(:course, create(:course))
   end
 
   it "renders attributes in <p>" do

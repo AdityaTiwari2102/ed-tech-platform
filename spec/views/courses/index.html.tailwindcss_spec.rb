@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "courses/index", type: :view do
   before(:each) do
     assign(:courses, [
-      FactoryBot.create(:course, title: "Title1", description: "Description", price: 1000, level: "beginner", category: "web_development", status: "live"),
-      FactoryBot.create(:course, title: "Title2", description: "Description", price: 1000, level: "beginner", category: "web_development", status: "live")
+      create(:course, title: "Title1", description: "Description", price: 1000, level: "beginner", category: "web_development", status: "live"),
+      create(:course, title: "Title2", description: "Description", price: 1000, level: "beginner", category: "web_development", status: "live")
   ])
   end
 

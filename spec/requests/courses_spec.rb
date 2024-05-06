@@ -18,7 +18,7 @@ RSpec.describe "/courses", type: :request do
   # Course. As you add validations to Course, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    FactoryBot.build(:course).attributes.except('id', 'created_at', 'updated_at')
+    build(:course).attributes.except('id', 'created_at', 'updated_at')
   }
 
   let(:invalid_attributes) {

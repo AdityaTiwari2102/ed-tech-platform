@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "tutors/new", type: :view do
   before(:each) do
-    assign(:tutor, FactoryBot.build(:tutor, course: FactoryBot.create(:course)))
+    assign(:tutor, build(:tutor, course: create(:course)))
   end
 
   it "renders new tutor form" do

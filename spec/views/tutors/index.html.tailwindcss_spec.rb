@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "tutors/index", type: :view do
   before(:each) do
     assign(:tutors, [
-      FactoryBot.create(:tutor, name: "Name", email: "tutor1@example.com", course: FactoryBot.create(:course)),
-      FactoryBot.create(:tutor, name: "Name", email: "tutor2@example.com", course: FactoryBot.create(:course))
+      create(:tutor, name: "Name", email: "tutor1@example.com", course: create(:course)),
+      create(:tutor, name: "Name", email: "tutor2@example.com", course: create(:course))
     ])
   end
 
